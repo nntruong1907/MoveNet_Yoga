@@ -1,0 +1,10 @@
+opencv-python
+wget
+tqdm
+tensorflow
+keras
+numpy
+pillow
+matplotlib
+sklearn
+pandas
