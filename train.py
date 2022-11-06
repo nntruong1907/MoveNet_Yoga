@@ -53,8 +53,28 @@ def LSTM():
 
     return model
 
-model = LSTM()
+def CNN():
+    inputs = tf.keras.Input(34)
+    layer = keras.layers.Dense(64, activation=tf.nn.relu6)(inputs)
+    layer = keras.layers.Dropout(0.2)(layer)
+    layer = keras.layers.Dense(128, activation=tf.nn.relu6)(layer)
+    layer = keras.layers.Dropout(0.2)(layer)
+    layer = keras.layers.Dense(64, activation=tf.nn.relu6)(layer)
+    layer = keras.layers.Dropout(0.2)(layer)
+    outputs = keras.layers.Dense(len(class_names), activation="softmax")(layer)
 
+    model = keras.Model(inputs, outputs)
+    model.summary()
+
+    model.compile(
+        optimizer='adam',
+        loss='categorical_crossentropy',
+        metrics=['accuracy']
+    )
+    return model
+
+model = LSTM()
+# model = CNN()
 # Add a checkpoint callback to store the checkpoint that has the highest validation accuracy.
 checkpoint_path = "models/weights.best.hdf5"
 model_path = 'models/model_yoga.h5'
@@ -100,7 +120,7 @@ data_eval = 'LOSS TEST: '+ str(loss_test) + ' / ACCURACY TEST: ' + str(accuracy_
 '''--------------------------------------- STATISTC -------------------------------------------'''
 
 # write Evaluation into txt
-Name_f = 'statistics/Evaluation.txt'
+Name_f = 'statistics/Evaluation2.txt'
 
 with open(Name_f, mode='w') as f:
     f.writelines(data_eval)
