@@ -4,7 +4,7 @@ import cv2
 from def_lib import detect, landmarks_to_embedding, draw_prediction_on_image, get_keypoint_landmarks
 
 model_path = './models/model_yoga.h5'
-image_path = './images/tree2.jpg'
+image_path = './images/warrior5.jpg'
 image_pred_path = './results/pose_test.png'
 image_result_path = './results/result.png'
 
@@ -29,11 +29,12 @@ print("Accuracy:", np.max(predict[0], axis=0))
 acc = round(np.max(predict[0], axis=0)*100, 2)
 print(class_names)
 print(np.argmax(predict))
+print(np.array(predict[0]))
 
 font = cv2.FONT_HERSHEY_DUPLEX
 org = (10, 40)
 fontScale = 1
-color = (0, 255, 0)
+color = (19, 255, 30)
 thickness = 1
 
 image = np.array(image)
