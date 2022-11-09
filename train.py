@@ -15,8 +15,7 @@ test_path = './data/test_data.csv'
 # Load the train data
 X, y, class_names = load_csv(train_path)
 # Split training data (X, y) into (X_train, y_train) and (X_val, y_val)
-X_train, X_val, y_train, y_val = train_test_split(
-    X, y, test_size=0.15, random_state=42)
+X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.15, random_state=42)
 # Load the test data
 X_test, y_test, _ = load_csv(test_path)
 
@@ -34,8 +33,6 @@ processed_X_val = preprocess_data(X_val)
 processed_X_test = preprocess_data(X_test)
 
 # Define the model
-
-
 def LSTM():
     inputs = tf.keras.Input(shape=(34, 1))
     layer = keras.layers.LSTM(
