@@ -5,7 +5,8 @@ from def_lib import detect, landmarks_to_embedding, draw_prediction_on_image, ge
 from datetime import datetime
 
 model_path = './models/model_yoga.h5'
-image_path = './images/cobra2.jpg'
+image_path = './images/tree2.jpg'
+class_names = ['chair', 'cobra', 'dog', 'tree', 'warrior']
 
 model = tf.keras.models.load_model(model_path)
 
@@ -21,13 +22,15 @@ pose_landmarks = get_keypoint_landmarks(person)
 
 # pose_landmarks
 lm_pose = landmarks_to_embedding(tf.reshape(tf.convert_to_tensor(pose_landmarks), (1, 51)))
-class_names = ['chair', 'cobra', 'dog', 'tree', 'warrior']
-
 predict = model.predict(lm_pose)
+
+print("Input shape:", lm_pose.shape)
+print("Output shape:", predict.shape)
+print("________________________________________________________________________")
 print("This picture is:", class_names[np.argmax(predict[0])])
 print("Accuracy:", np.max(predict[0], axis=0))
 acc = round(np.max(predict[0], axis=0)*100, 2)
-print(class_names)
+print("\n", class_names)
 print(np.argmax(predict))
 print(np.array(predict[0]))
 
