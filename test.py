@@ -4,8 +4,9 @@ import cv2
 from def_lib import detect, landmarks_to_embedding, draw_prediction_on_image, get_keypoint_landmarks
 from datetime import datetime
 
-model_path = './models/model_yoga.h5'
-image_path = './images/tree2.jpg'
+# model_path = './models/model_yoga.h5'
+model_path = './models/model_yoga_LSTM.h5'
+image_path = './images/tree4.jpg'
 class_names = ['chair', 'cobra', 'dog', 'tree', 'warrior']
 
 model = tf.keras.models.load_model(model_path)

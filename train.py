@@ -77,11 +77,14 @@ def CNN():
     return model
 
 
-model = CNN()
+# model = CNN()
+model = LSTM()
 
 # Add a checkpoint callback to store the checkpoint that has the highest validation accuracy.
-checkpoint_path = "./models/weights.best.hdf5"
-model_path = './models/model_yoga.h5'
+# checkpoint_path = "./models/weights.best.hdf5"
+# model_path = './models/model_yoga.h5'
+checkpoint_path = "./models/weights.best_LSTM.hdf5"
+model_path = './models/model_yoga_LSTM.h5'
 
 checkpoint = keras.callbacks.ModelCheckpoint(checkpoint_path,
                                              monitor='val_accuracy',
@@ -123,14 +126,16 @@ data_eval = 'LOSS TEST: ' + str(loss_test) + ' / ACCURACY TEST: ' + str(accuracy
 '''--------------------------------------- STATISTC -------------------------------------------'''
 
 # write Evaluation into txt
-Name_f = './statistics/Evaluation.txt'
+# Name_f = './statistics/Evaluation.txt'
+Name_f = './statistics/Evaluation_LSTM.txt'
 
 with open(Name_f, mode='w') as f:
     f.writelines(data_eval)
 f.close()
 
 # Visualize the training history to see whether you're overfitting.
-image_acc_path = './statistics/model_acc.png'
+# image_acc_path = './statistics/model_acc.png'
+image_acc_path = './statistics/model_acc_LSTM.png'
 plt.plot(history.history['accuracy'])
 plt.plot(history.history['val_accuracy'])
 plt.title('Model Accuracy')
@@ -142,7 +147,8 @@ plt.savefig(image_acc_path)
 plt.close()
 
 # Visualize the training history to see whether you're overfitting.
-image_loss_path = './statistics/model_loss.png'
+# image_loss_path = './statistics/model_loss.png'
+image_loss_path = './statistics/model_loss_LSTM.png'
 plt.plot(history.history['loss'])
 plt.plot(history.history['val_loss'])
 plt.title('Model Loss')
@@ -187,8 +193,10 @@ def plot_confusion_matrix(cm, classes, normalize=False,
     fig.savefig(plot_confusion_matrix_path)
 
 
-classification_report_path = './statistics/Classification_report.txt'
-plot_confusion_matrix_path = './statistics/Confusion_matrix.png'
+# classification_report_path = './statistics/Classification_report.txt'
+# plot_confusion_matrix_path = './statistics/Confusion_matrix.png'
+classification_report_path = './statistics/Classification_report_LSTM.txt'
+plot_confusion_matrix_path = './statistics/Confusion_matrix_LSTM.png'
 
 # Classify pose in the TEST dataset using the trained model
 y_pred = model.predict(processed_X_test)
