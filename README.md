@@ -62,7 +62,7 @@ Skeleton is extracted like below FIG
 
 <div align="center">
     <a href="./">
-        <img src="./images/draw_skeleton.png" width="100%"/>
+        <img src="./images/draw_skeleton.png" width="60%"/>
     </a>
 </div>
 
