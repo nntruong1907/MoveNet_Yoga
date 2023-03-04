@@ -1,11 +1,11 @@
               precision    recall  f1-score   support
 
-       chair       0.51      0.89      0.65        84
-       cobra       0.89      0.99      0.94        93
-         dog       0.99      1.00      0.99        84
-        tree       0.76      0.39      0.51        96
-     warrior       0.98      0.60      0.75        68
+       chair       0.79      1.00      0.88        84
+       cobra       0.93      0.96      0.94       116
+         dog       1.00      1.00      1.00        90
+        tree       0.95      1.00      0.97        96
+     warrior       1.00      0.71      0.83       109
 
-    accuracy                           0.77       425
-   macro avg       0.83      0.77      0.77       425
-weighted avg       0.82      0.77      0.77       425
+    accuracy                           0.93       495
+   macro avg       0.93      0.93      0.92       495
+weighted avg       0.94      0.93      0.92       495

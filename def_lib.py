@@ -154,7 +154,7 @@ class MoveNetPreprocessor(object):
         header_name = []
         for columns_name in list_name:
             header_name += columns_name
-        header_name = ['filename'] + header_name
+        header_name = ['file_name'] + header_name
         header_map = {total_df.columns[i]: header_name[i]
                       for i in range(len(header_name))
                       }
@@ -171,7 +171,7 @@ def load_csv(csv_path):
     df = pd.read_csv(csv_path)
 
     # Drop the file_name columns as you don't need it during training.
-    df.drop(['filename'], axis=1, inplace=True)
+    df.drop(['file_name'], axis=1, inplace=True)
     print(df)
 
     # Extract(Trích xuất) the list of class names
